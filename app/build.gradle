@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.hxd.bcuvtsystem"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // 基础库（不包任何第三方框架）
+    implementation project(':base')
+    // 自定义 View
+    implementation project(':widget')
+    // Dialog 封装
+    implementation project(':dialog')
+    // Glide 隔离
+    implementation project(':image')
+
+    // Dex分包，解决 64k 问题
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation "com.android.support:appcompat-v7:28.0.0"
+    implementation "com.android.support:design:28.0.0"
+    implementation "com.android.support:support-v4:28.0.0"
+    implementation "com.android.support:cardview-v7:28.0.0"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // ButterKnife 注解库：https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    // EventBus 事件总线
+//    implementation "org.greenrobot:eventbus:3.1.1"
+//    annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+
+    // 状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
+    // 侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0'
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    implementation 'com.hjq:xxpermissions:5.5'
+    // 标题栏：https://github.com/getActivity/TitleBar
+    implementation 'com.hjq:titlebar:5.0'
+    // 吐司工具类：https://github.com/getActivity/ToastUtils
+    implementation 'com.hjq:toast:6.0'
+
+    // 圆形的ImageView：https://github.com/hdodenhof/CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+}
